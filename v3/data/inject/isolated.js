@@ -30,6 +30,7 @@ const update = () => chrome.storage.local.get({
   'mouseout': true,
   'visibility': true,
   'pointercapture': true,
+  'fullscreen': false,
   'policies': null
 }, prefs => {
   let hostname = location.hostname;
@@ -48,6 +49,7 @@ const update = () => chrome.storage.local.get({
   port.dataset.mouseout = policy.includes('mouseout') ? false : prefs.mouseout;
   port.dataset.visibility = policy.includes('visibility') ? false : prefs.visibility;
   port.dataset.pointercapture = policy.includes('pointercapture') ? false : prefs.pointercapture;
+  port.dataset.fullscreen = policy.includes('fullscreen') ? false : prefs.fullscreen;
 });
 update();
 chrome.storage.onChanged.addListener(update);

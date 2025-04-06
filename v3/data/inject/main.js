@@ -168,4 +168,56 @@
       return Reflect.apply(target, self, args);
     }
   });
+
+  /* fullscreen */
+  const nativeFullscreenElement = Object.getOwnPropertyDescriptor(Document.prototype, 'fullscreenElement').get;
+  const nativeWebkitFullscreenElement = Object.getOwnPropertyDescriptor(Document.prototype, 'webkitFullscreenElement')?.get;
+  const nativeMozFullScreenElement = Object.getOwnPropertyDescriptor(Document.prototype, 'mozFullScreenElement')?.get;
+
+  Object.defineProperty(document, 'fullscreenElement', {
+    get() {
+      if (port.dataset.enabled === 'true' && port.dataset.fullscreen !== 'false') {
+        return document.documentElement;
+      }
+      return nativeFullscreenElement.call(document);
+    }
+  });
+  Object.defineProperty(document, 'fullscreen', {
+    get() {
+      return true;
+    }
+  });
+  Object.defineProperty(document, 'webkitFullscreenElement', {
+    get() {
+      if (port.dataset.enabled === 'true' && port.dataset.fullscreen !== 'false') {
+        return document.documentElement;
+      }
+      return nativeWebkitFullscreenElement?.call(document) ?? null;
+    }
+  });
+  Object.defineProperty(document, 'mozFullScreenElement', {
+    get() {
+      if (port.dataset.enabled === 'true' && port.dataset.fullscreen !== 'false') {
+        return document.documentElement;
+      }
+      return nativeMozFullScreenElement?.call(document) ?? null;
+    }
+  });
+
+  /* fullscreen events */
+  document.addEventListener('fullscreenchange', e => {
+    if (port.dataset.enabled === 'true' && port.dataset.fullscreen !== 'false') {
+      return block(e);
+    }
+  }, true);
+  document.addEventListener('webkitfullscreenchange', e => {
+    if (port.dataset.enabled === 'true' && port.dataset.fullscreen !== 'false') {
+      return block(e);
+    }
+  }, true);
+  document.addEventListener('mozfullscreenchange', e => {
+    if (port.dataset.enabled === 'true' && port.dataset.fullscreen !== 'false') {
+      return block(e);
+    }
+  }, true);
 }

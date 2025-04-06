@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "version": "0.4.3",
-  "name": "Always active Window - Always Visible",
+  "name": "Always active Window - Modified",
   "default_locale": "en",
   "description": "__MSG_description__",
   "permissions": [
