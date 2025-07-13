@@ -16,3 +16,9 @@ This extension protects against web pages tracking the activity state of the pag
 ## License
 
 Allow Right-Click is an open-source project released under [MPL-2.0](https://github.com/lunu-bounir/allow-right-click.html/blob/master/LICENSE)
+
+## Usage
+Load the extension in Chrome:
+Open Chrome and go to chrome://extensions/
+Enable "Developer mode" (toggle in top-right)
+Click "Load unpacked" and select the v3 folder

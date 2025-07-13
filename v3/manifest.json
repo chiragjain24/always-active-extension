@@ -30,8 +30,7 @@
     "512": "/data/icons/512.png"
   },
   "background": {
-    "service_worker": "worker.js",
-    "scripts": ["worker.js"]
+    "service_worker": "worker.js"
   },
   "options_ui": {
     "open_in_tab": true,
